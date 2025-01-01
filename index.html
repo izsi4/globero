@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Játék Pénz Utalás</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .player { margin-bottom: 10px; }
+        button { margin-left: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Játék Pénz Utalás</h1>
+    <div id="players">
+        <div class="player" id="Player1">Player1 - Balance: 0</div>
+        <div class="player" id="Player2">Player2 - Balance: 0</div>
+        <div class="player" id="Player3">Player3 - Balance: 0</div>
+        <div class="player" id="Player4">Player4 - Balance: 0</div>
+    </div>
+    <h2>Bankos Panel</h2>
+    <div>
+        <button onclick="transferMoney('Player1', 100)">Player1 +100</button>
+        <button onclick="transferMoney('Player2', 100)">Player2 +100</button>
+        <button onclick="transferMoney('Player3', 100)">Player3 +100</button>
+        <button onclick="transferMoney('Player4', 100)">Player4 +100</button>
+    </div>
+    <script>
+        let players = {
+            "Player1": 0,
+            "Player2": 0,
+            "Player3": 0,
+            "Player4": 0,
+        };
+
+        function transferMoney(playerName, amount) {
+            players[playerName] += amount;
+            updateUI();
+        }
+
+        function updateUI() {
+            for (let player in players) {
+                document.getElementById(player).innerText = `${player} - Balance: ${players[player]}`;
+            }
+        }
+    </script>
+</body>
+</html>
